@@ -177,3 +177,17 @@ You may share and adapt these assets for non-commercial purposes.
 You must provide attribution to the original author (PenguinOS).
 Include a reference to the license and note any modifications.
 Read the full license text at https://creativecommons.org/licenses/by-nc/4.0/.
+
+## OnePlus Pad 2 (caihong)
+
+Branch `17` adds `caihong.xml`: the caihong device, hardware, vendor and kernel trees, the pineapple
+HAL stack, and the caihong-clo forks of the Penguin projects that carry caihong changes.
+
+```
+repo init -u git@github.com:caihong-clo/manifest -b 17
+repo sync -c --no-tags
+source build/envsetup.sh
+lunch aospa_caihong-cp2a-userdebug
+```
+
+The vendor, camera and kernel projects are private repositories; sync needs SSH access to them.

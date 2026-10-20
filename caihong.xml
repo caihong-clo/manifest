@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  caihong (OnePlus Pad 2, sm8650/pineapple) on Penguin celerity.
+  Replaces the projects that carry caihong changes with their caihong-clo forks
+  (branch 17) and adds the device, vendor, kernel and pineapple HAL projects.
+-->
+<manifest>
+
+  <remote name="caihong" fetch="ssh://git@github.com/caihong-clo" revision="17" />
+  <remote name="saikiranworks" fetch="ssh://git@github.com/saikiranworks" revision="17-caihong" />
+
+  <!-- Projects of the Penguin manifest that carry caihong changes -->
+  <remove-project name="Project-PenguinOS/build_make" />
+  <project path="build/make" name="build_make" remote="caihong">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <remove-project name="Project-PenguinOS/build_soong" />
+  <project path="build/soong" name="build_soong" remote="caihong">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <remove-project name="AOSPA/android_device_qcom_common" />
+  <project path="device/qcom/common" name="device_qcom_common" remote="caihong">
+    <linkfile src="generate_extra_images.mk" dest="vendor/qcom/build/tasks/generate_extra_images.mk" />
+  </project>
+  <remove-project name="platform/external/dtc" />
+  <project path="external/dtc" name="external_dtc" remote="caihong" />
+  <remove-project name="Project-PenguinOS/frameworks_av" />
+  <project path="frameworks/av" name="frameworks_av" remote="caihong" />
+  <remove-project name="Project-PenguinOS/frameworks_base" />
+  <project path="frameworks/base" name="frameworks_base" remote="caihong" />
+  <remove-project name="Project-PenguinOS/packages_apps_Launcher3" />
+  <project path="packages/apps/Launcher3" name="packages_apps_Launcher3" remote="caihong" />
+  <remove-project name="Project-PenguinOS/penguin_packages_apps_PenguinLaboratory" />
+  <project path="packages/apps/PenguinLaboratory" name="penguin_packages_apps_PenguinLaboratory" remote="caihong" />
+  <remove-project name="Project-PenguinOS/penguin_packages_apps_PenguinSystemUI" />
+  <project path="packages/apps/PenguinSystemUI" name="penguin_packages_apps_PenguinSystemUI" remote="caihong" />
+  <remove-project name="Project-PenguinOS/packages_apps_Settings" />
+  <project path="packages/apps/Settings" name="packages_apps_Settings" remote="caihong" />
+  <remove-project name="Project-PenguinOS/android_vendor_aospa" />
+  <project path="vendor/aospa" name="vendor_aospa" remote="caihong">
+    <linkfile src="build.sh" dest="rom-build.sh" />
+  </project>
+  <remove-project name="Project-PenguinOS/vendor_qcom_opensource_commonsys-intf_display" />
+  <project path="vendor/qcom/opensource/commonsys-intf/display" name="vendor_qcom_opensource_commonsys-intf_display" remote="caihong" />
+
+  <!-- caihong device, hardware and vendor trees -->
+  <project path="device/oneplus/sm8650-common" name="android_device_oneplus_sm8650-common" remote="caihong" />
+  <project path="device/oneplus/caihong" name="android_device_oneplus_caihong" remote="caihong" />
+  <project path="device/oneplus/caihong-kernel" name="android_device_oneplus_caihong-kernel" remote="caihong" />
+  <project path="hardware/oplus" name="android_hardware_oplus" remote="caihong" />
+  <project path="vendor/oneplus/sm8650-common" name="proprietary_vendor_oneplus_sm8650-common" remote="caihong" />
+  <project path="vendor/oneplus/caihong" name="proprietary_vendor_oneplus_caihong" remote="caihong" />
+  <project path="vendor/oplus/camera" name="vendor_oplus_camera" remote="caihong" />
+
+  <!-- caihong kernel and IR blaster (unchanged by the Penguin port) -->
+  <project path="kernel/oneplus/sm8650" name="android_kernel_oneplus_sm8650" remote="saikiranworks" />
+  <project path="kernel/oneplus/sm8650-devicetrees" name="android_kernel_oneplus_sm8650-devicetrees" remote="saikiranworks" />
+  <project path="kernel/oneplus/sm8650-modules" name="android_kernel_oneplus_sm8650-modules" remote="saikiranworks" />
+  <project path="vendor/oneplus/ir" name="proprietary_vendor_oneplus_ir" remote="saikiranworks" />
+
+  <!-- pineapple HAL stack for sm8650 (from clo-for-giulia platforms/pineapple.xml) -->
+  <project path="hardware/qcom/display" name="AOSPA/android_hardware_qcom_display" remote="aospa" revision="calcite-8650" />
+  <project path="hardware/qcom/gps" name="AOSPA/android_hardware_qcom_gps" remote="aospa" revision="calcite-8650" />
+  <project path="vendor/qcom/opensource/agm" name="AOSPA/android_vendor_qcom_opensource_agm" remote="aospa" revision="calcite-8650" />
+  <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="AOSPA/android_hardware_qcom_audio" remote="aospa" revision="calcite-8650">
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/audio_vendor_product.mk" src="configs/audio_vendor_product.mk" />
+  </project>
+  <project path="vendor/qcom/opensource/audioreach-graphservices" name="AOSPA/android_vendor_qcom_opensource_audioreach-graphservices" remote="aospa" revision="calcite-8650" />
+  <project path="vendor/qcom/opensource/pal" name="AOSPA/android_vendor_qcom_opensource_arpal-lx" remote="aospa" revision="calcite-8650" />
+  <project path="vendor/qcom/opensource/audio-hal/st-hal-ar" name="AOSPA/android_vendor_qcom_opensource_audio-hal_st-hal-ar" remote="aospa" revision="calcite-8650" />
+  <project path="vendor/qcom/opensource/libvmmem" name="clo-for-giulia/android_vendor_qcom_opensource_libvmmem" remote="github" revision="celerity" />
+
+  <!-- CLO kernelscripts would add a second kernel build next to vendor/aospa build/tasks/kernel.mk -->
+  <remove-project name="AOSPA/android_kernel_build" />
+
+  <!-- Host libelf/openssl/pahole/lz4 for the vendor/aospa kernel build -->
+  <project path="prebuilts/kernel-build-tools" name="kernel/prebuilts/build-tools" clone-depth="1" remote="aosp" revision="main-kernel-2025" />
+</manifest>
