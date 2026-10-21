@@ -42,6 +42,8 @@
   <project path="packages/apps/PenguinSystemUI" name="penguin_packages_apps_PenguinSystemUI" remote="caihong" />
   <remove-project name="Project-PenguinOS/packages_apps_Settings" />
   <project path="packages/apps/Settings" name="packages_apps_Settings" remote="caihong" />
+  <remove-project name="Project-PenguinOS/packages_apps_ThemePicker" />
+  <project path="packages/apps/ThemePicker" name="packages_apps_ThemePicker" remote="caihong" />
   <remove-project name="Project-PenguinOS/android_vendor_aospa" />
   <project path="vendor/aospa" name="vendor_aospa" remote="caihong">
     <linkfile src="build.sh" dest="rom-build.sh" />
