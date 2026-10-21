@@ -60,14 +60,14 @@
   <project path="vendor/oneplus/caihong" name="proprietary_vendor_oneplus_caihong" remote="caihong" />
   <project path="vendor/oplus/camera" name="vendor_oplus_camera" remote="caihong" />
 
-  <!-- caihong kernel and IR blaster (unchanged by the Penguin port) -->
+  <!-- caihong kernel and IR blaster -->
   <project path="kernel/oneplus/sm8650" name="android_kernel_oneplus_sm8650" remote="saikiranworks" />
   <project path="kernel/oneplus/sm8650-devicetrees" name="android_kernel_oneplus_sm8650-devicetrees" remote="saikiranworks" />
-  <project path="kernel/oneplus/sm8650-modules" name="android_kernel_oneplus_sm8650-modules" remote="saikiranworks" />
+  <project path="kernel/oneplus/sm8650-modules" name="android_kernel_oneplus_sm8650-modules" remote="caihong" />
   <project path="vendor/oneplus/ir" name="proprietary_vendor_oneplus_ir" remote="saikiranworks" />
 
   <!-- pineapple HAL stack for sm8650 (from clo-for-giulia platforms/pineapple.xml) -->
-  <project path="hardware/qcom/display" name="AOSPA/android_hardware_qcom_display" remote="aospa" revision="calcite-8650" />
+  <project path="hardware/qcom/display" name="hardware_qcom_display" remote="caihong" />
   <project path="hardware/qcom/gps" name="AOSPA/android_hardware_qcom_gps" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/agm" name="AOSPA/android_vendor_qcom_opensource_agm" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="AOSPA/android_hardware_qcom_audio" remote="aospa" revision="calcite-8650">
@@ -77,6 +77,12 @@
   <project path="vendor/qcom/opensource/pal" name="AOSPA/android_vendor_qcom_opensource_arpal-lx" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/audio-hal/st-hal-ar" name="AOSPA/android_vendor_qcom_opensource_audio-hal_st-hal-ar" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/libvmmem" name="clo-for-giulia/android_vendor_qcom_opensource_libvmmem" remote="github" revision="celerity" />
+
+  <!-- Remaining projects with caihong changes -->
+  <remove-project name="AOSPA/android_vendor_qcom-opensource_power" />
+  <project path="vendor/qcom/opensource/power" name="vendor_qcom_opensource_power" remote="caihong" />
+  <remove-project name="android_vendor_aospa_prebuilt" />
+  <project path="vendor/aospa/prebuilt" name="vendor_aospa_prebuilt" remote="caihong" />
 
   <!-- CLO kernelscripts would add a second kernel build next to vendor/aospa build/tasks/kernel.mk -->
   <remove-project name="AOSPA/android_kernel_build" />
